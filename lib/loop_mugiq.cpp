@@ -1,7 +1,10 @@
 #include <loop_mugiq.h>
 #include <gamma.h>
 #include <cublas_v2.h>
+
+#ifdef HDF5_LIB
 #include <hdf5.h>
+#endif
 
 template <typename Float, QudaFieldOrder fieldOrder>
 Loop_Mugiq<Float, fieldOrder>::Loop_Mugiq(MugiqLoopParam *loopParams_,
@@ -528,7 +531,7 @@ void Loop_Mugiq<Float, fieldOrder>::computeCoarseLoop(){
 //- Write the momentum-space loop data in HDF5 format
 template <typename Float, QudaFieldOrder fieldOrder>
 void Loop_Mugiq<Float, fieldOrder>::writeLoopsHDF5_Mom(){
-
+#ifdef HDF5_LIB
   if(!commsAreSet) setupComms();
   
   //- Only the "time" processes will write, they are the ones that have the globally reduced data buffer!
@@ -652,7 +655,9 @@ void Loop_Mugiq<Float, fieldOrder>::writeLoopsHDF5_Mom(){
     H5Fclose(file_id);
     
   }//- If time process
-    
+#else // HDF5_LIB
+  errorQuda("Function not available: compile with HDF5");
+#endif
 }
 
 
@@ -668,6 +673,7 @@ void Loop_Mugiq<Float, fieldOrder>::writeLoopsHDF5_Pos(){
 template <typename Float, QudaFieldOrder fieldOrder>
 void Loop_Mugiq<Float, fieldOrder>::writeLoopsHDF5(){
 
+#ifdef HDF5_LIB
   if(cPrm->doMomProj){
     if(writeDataMom) printfQuda("%s: Will write the momentum-space loop data in HDF5 format\n", __func__);
     else{
@@ -689,7 +695,9 @@ void Loop_Mugiq<Float, fieldOrder>::writeLoopsHDF5(){
     printfQuda("%s: Will write the position-space loop data in HDF5 format\n", __func__);
     writeLoopsHDF5_Pos();
   }
-  
+#else // HDF5_LIB
+  errorQuda("Function not available: compile with HDF5");
+#endif
 }
 
 //- Explicit instantiation of the templates of the Loop_Mugiq class
