@@ -28,7 +28,7 @@ if(BUILD_MUGIQ_CUDA_LIB)
   # cmake-format: on
 
 
-  cuda_add_library(mugiq STATIC $<TARGET_OBJECTS:mugiq_cpp> ${MUGIQ_CUDA_OBJS})
+  add_library(mugiq STATIC $<TARGET_OBJECTS:mugiq_cpp> ${MUGIQ_CUDA_OBJS})
 
   # Include Directories
   target_include_directories(mugiq PRIVATE .)
@@ -36,10 +36,6 @@ if(BUILD_MUGIQ_CUDA_LIB)
   target_include_directories(mugiq PUBLIC $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include> $<INSTALL_INTERFACE:include>)
 
 
-  # If using the CXX flags with the CUDA host compiler
-  if(${MUGIQ_USE_CXX_FLAGS_WITH_CUDA})
-    target_compile_options(mugiq PUBLIC $<$<COMPILE_LANGUAGE:CUDA>: $<$<CONFIG:DEVEL>:-Xcompiler ${CMAKE_CXX_FLAGS_DEVEL}> >)
-  endif()
   #--------------------------------------------------------------
 
 

@@ -152,9 +152,6 @@ set(MUGIQ_CXX_STANDARD 14 CACHE STRING "set the CXX Standard (11, 14 or 17)")
 set_property(CACHE MUGIQ_CXX_STANDARD PROPERTY STRINGS 11 14 17)
 set(CMAKE_CXX_STANDARD ${MUGIQ_CXX_STANDARD})
 
-# Whether to use CXX Flags on CUDA Host compiler
-set(MUGIQ_USE_CXX_FLAGS_WITH_CUDA ON CACHE BOOL "use CXX_FLAGS with CUDA host compiler (for cmake >= 3.8)")
-
 # define CXX FLAGS
 set(CMAKE_CXX_FLAGS_DEVEL "${OpenMP_CXX_FLAGS} -g -O3 -Wall" CACHE STRING "Flags used by the C++ compiler for DEVEL (standard) builds.")
 enable_language(CXX)
@@ -218,6 +215,7 @@ endif()
 
 # QUDA options
 if(MUGIQ_QUDA)
+  enable_language(CUDA)
 
   if(MUGIQ_QUDA_HOME STREQUAL "")
     message(FATAL_ERROR "MUGIQ_QUDA_HOME must be specified")
@@ -227,7 +225,9 @@ if(MUGIQ_QUDA)
   endif()
   
   find_library (LIB_QUDA libquda.a HINTS ${MUGIQ_QUDA_HOME}/lib NO_DEFAULT_PATH)
-  find_library (LIB_QUDATEST libquda_test.a HINTS ${MUGIQ_QUDA_HOME}/tests NO_DEFAULT_PATH)
+  if (MUGIQ_BUILD_ALL_TESTS)
+    find_library (LIB_QUDATEST libquda_test.a HINTS ${MUGIQ_QUDA_HOME}/tests NO_DEFAULT_PATH)
+  endif()
 
   if(NOT LIB_QUDA)
     message(FATAL_ERROR "QUDA Library not found")
