@@ -400,3 +400,21 @@ void Eigsolve_Mugiq::projectVector(ColorSpinorField &out, ColorSpinorField &in){
 
   delete Min;
 }
+
+/**
+ * Perform the projection: out = \sum_i evecs_i * dot(evecs_i*,\gamma_5 * fine_op * in) / eval_i
+ */
+void Eigsolve_Mugiq::getVector(unsigned int i, ColorSpinorField &out){
+  if (computeCoarse && mg_env->nCoarseLevels > 0) {
+    for(int lev=mg_env->nCoarseLevels; lev>1; lev--){
+      blas::zero(*tmpCSF[lev-1]);
+      mg_env->transfer[lev - 1]->P(
+          *tmpCSF[lev - 1],
+          *(lev == mg_env->nCoarseLevels ? eVecs[i] : tmpCSF[lev]));
+    }
+    blas::zero(out);
+    mg_env->transfer[0]->P(out, *tmpCSF[1]);
+  } else {
+    blas::copy(out, *eVecs[i]);
+  }
+}

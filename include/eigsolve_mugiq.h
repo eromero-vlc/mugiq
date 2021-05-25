@@ -156,6 +156,10 @@ public:
    */
   void projectVector(ColorSpinorField &out, ColorSpinorField &in);
 
+  /** @brief Return evecs_i on the finest level
+   */
+  void getVector(unsigned int i, ColorSpinorField &out);
+
   /** @brief Compute eigenvalues
    */
   void printEvals();
