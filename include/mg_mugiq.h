@@ -3,6 +3,8 @@
 
 #include <multigrid.h> //- The QUDA MG header file
 
+namespace mugiq {
+
 using namespace quda;
 
 struct MG_Mugiq {
@@ -66,5 +68,6 @@ struct MG_Mugiq {
   
 }; //- Struct MG_Mugiq
 
+} // namespace muqiq
 
 #endif // _MG_MUGIQ_H

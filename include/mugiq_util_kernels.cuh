@@ -3,6 +3,8 @@
 
 #include <contract_util.cuh>
 
+namespace mugiq {
+
 using namespace quda;
 
 template <typename Float>
@@ -15,5 +17,6 @@ __global__ void phaseMatrix_kernel(complex<Float> *phaseMatrix, int *momMatrix, 
 template <typename Float>
 __global__ void convertIdxOrder_mapGamma_kernel(complex<Float> *dataOut, const complex<Float> *dataIn, ConvertIdxArg *arg);
 
+} // namespace muqiq
 
 #endif // _MUGIQ_UTIL_KERNELS_CUH

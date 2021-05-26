@@ -1,5 +1,7 @@
 #include <mugiq_displace_kernels.cuh>
 
+namespace mugiq {
+
 //- Whether a site is even (return 0) or odd (return 1)
 inline static __device__ int evenORodd(const int x[]){
   return (x[0] + x[1] + x[2] + x[3]) % 2;
@@ -196,3 +198,5 @@ template __global__ void covariantDisplacementVector_kernel<double, CovDispVecAr
 template __global__ void covariantDisplacementVector_kernel<double, CovDispVecArg<double,QUDA_FLOAT4_FIELD_ORDER>,
 							    QUDA_FLOAT4_FIELD_ORDER>
 (CovDispVecArg<double, QUDA_FLOAT4_FIELD_ORDER> *arg, DisplaceDir dispDir, DisplaceSign dispSign);
+
+} // namespace mugiq

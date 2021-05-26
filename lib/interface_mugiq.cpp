@@ -32,6 +32,8 @@
 
 #include <type_traits>
 
+namespace mugiq {
+
 //- Profiling
 static quda::TimeProfile profileEigensolveMuGiq("computeEvecsMuGiq");
 static quda::TimeProfile profileMuGiqMG("MugiqMG-Init");
@@ -251,3 +253,5 @@ template void computeLoop<double>(QudaMultigridParam mgParams, QudaEigParam Quda
 				  MuGiqBool computeCoarse, MuGiqBool useMG);
 template void computeLoop<float>(QudaMultigridParam mgParams, QudaEigParam QudaEigParams, MugiqLoopParam loopParams,
 				 MuGiqBool computeCoarse, MuGiqBool useMG);
+
+} // namespace mugiq

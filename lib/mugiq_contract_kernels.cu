@@ -1,5 +1,6 @@
 #include <mugiq_contract_kernels.cuh>
 
+namespace mugiq {
 
 //- Shared memory buffer with the left and right vectors, as well as the contraction data
 template <typename Float>
@@ -132,3 +133,5 @@ template __global__ void loopContract_kernel<double, LoopContractArg<double,QUDA
 template __global__ void loopContract_kernel<double, LoopContractArg<double,QUDA_FLOAT4_FIELD_ORDER>>
 (complex<double> *loopData, LoopContractArg<double,QUDA_FLOAT4_FIELD_ORDER> *arg);
 //------------------------------------------------------------------------------------------
+
+} // namespace mugiq

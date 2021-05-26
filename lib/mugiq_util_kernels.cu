@@ -1,5 +1,7 @@
 #include <mugiq_util_kernels.cuh>
 
+namespace mugiq {
+
 template <typename Float>
 __global__ void phaseMatrix_kernel(complex<Float> *phaseMatrix, int *momMatrix, MomProjArg *arg){
 
@@ -103,3 +105,5 @@ template __global__ void convertIdxOrder_mapGamma_kernel<float> (complex<float> 
 template __global__ void convertIdxOrder_mapGamma_kernel<double>(complex<double> *dataOut, const complex<double> *dataIn,
 								 ConvertIdxArg *arg);
 //---------------------------------------------------------------------------
+
+} // namespace mugiq

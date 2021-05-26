@@ -3,6 +3,8 @@
 #include <mugiq_contract_kernels.cuh>
 #include <mugiq_displace_kernels.cuh>
 
+namespace mugiq {
+
 template <typename Float>
 void copyGammaCoeffStructToSymbol(){
 
@@ -215,3 +217,5 @@ template void performCovariantDisplacementVector<double,QUDA_FLOAT4_FIELD_ORDER>
 										 cudaGaugeField *gauge,
 										 DisplaceDir dispDir, DisplaceSign dispSign);
 //----------------------------------------------------------------------------
+
+} // namespace mugiq

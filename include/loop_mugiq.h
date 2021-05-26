@@ -7,6 +7,8 @@
 #include <displace.h>
 #include <mpi.h>
 
+namespace mugiq {
+
 using namespace quda;
 
 template <typename Float, QudaFieldOrder fieldOrder>
@@ -312,5 +314,6 @@ void convertIdxOrder_mapGamma(complex<Float> *dataPosMP_d, const complex<Float> 
 
 
 
+} // namespace muqiq
 
 #endif // _LOOP_MUGIQ_H

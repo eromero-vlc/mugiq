@@ -4,6 +4,8 @@
 #include <util_mugiq.h>
 #include <mugiq.h>
 
+namespace mugiq {
+
 using namespace quda;
 
 
@@ -108,5 +110,6 @@ inline std::vector<int> indexMapGamma(){
   return idxG;
 }
 
+} // namespace muqiq
 
 #endif

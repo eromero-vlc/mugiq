@@ -6,12 +6,17 @@
 #include <color_spinor_field.h>  //- From QUDA
 #include <mg_mugiq.h>
 #include <enum_mugiq.h>
+#include <complex>
+
+namespace mugiq {
 
 using namespace quda;
 
 // Forward declaration of the QUDA-interface function that is needed here
 cudaGaugeField *checkGauge(QudaInvertParam *param);
 
+// Complex number
+using Complex = std::complex<double>;
 
 struct MugiqEigParam {
   
@@ -195,6 +200,6 @@ public:
   
 }; // class Eigsolve_Mugiq 
 
-
+} // namespace mugiq
 
 #endif // _EIGSOLVE_MUGIQ_H

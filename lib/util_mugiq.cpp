@@ -3,6 +3,8 @@
 #include <sys/sysinfo.h>
 #include <cuda_runtime_api.h>
 
+namespace mugiq {
+
 void printCPUMemInfo(){
   struct sysinfo memInfo;
   sysinfo (&memInfo);
@@ -38,3 +40,5 @@ void printMemoryInfo(){
   printGPUMemInfo();
   printf("--------------------------------------------------\n\n");
 }
+
+} // namespace mugiq

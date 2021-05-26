@@ -7,6 +7,8 @@
 #include <util_mugiq.h>
 #include <gauge_field.h>
 
+namespace mugiq {
+
 using namespace quda;
 
 
@@ -109,5 +111,7 @@ public:
 template <typename Float, QudaFieldOrder order>
 void performCovariantDisplacementVector(ColorSpinorField *dst, ColorSpinorField *src, cudaGaugeField *gauge,
 					DisplaceDir dispDir, DisplaceSign dispSign);
+
+} // namespace muqiq
 
 #endif // _DISPLACE_H

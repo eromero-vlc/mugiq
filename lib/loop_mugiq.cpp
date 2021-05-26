@@ -6,6 +6,8 @@
 #include <hdf5.h>
 #endif
 
+namespace mugiq {
+
 template <typename Float, QudaFieldOrder fieldOrder>
 Loop_Mugiq<Float, fieldOrder>::Loop_Mugiq(MugiqLoopParam *loopParams_,
                               Eigsolve_Mugiq *eigsolve_) :
@@ -707,3 +709,5 @@ template class Loop_Mugiq<float, QUDA_FLOAT2_FIELD_ORDER>;
 template class Loop_Mugiq<float, QUDA_FLOAT4_FIELD_ORDER>;
 template class Loop_Mugiq<double, QUDA_FLOAT2_FIELD_ORDER>;
 template class Loop_Mugiq<double, QUDA_FLOAT4_FIELD_ORDER>;
+
+} // namespace mugiq

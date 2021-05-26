@@ -13,6 +13,8 @@
 #include <vector>
 #include <string>
 
+namespace mugiq {
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -80,5 +82,6 @@ template <typename Float>
 void computeLoop(QudaMultigridParam mgParams, QudaEigParam eigParams, MugiqLoopParam loopParams,
 		 MuGiqBool computeCoarse, MuGiqBool useMG);
 
+} // namespace muqiq
 
 #endif // _MUGIQ_H

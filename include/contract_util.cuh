@@ -9,6 +9,8 @@
 #include <gauge_field.h>
 #include <gauge_field_order.h>
 
+namespace mugiq {
+
 using namespace quda;
 
 constexpr int cSize = 8192; // Size of constant memory symbols, set it to 8K
@@ -193,6 +195,6 @@ struct CovDispVecArg : public ArgGeom {
   ~CovDispVecArg() {}
 };
 
-
+} // namespace muqiq
 
 #endif // _CONTRACT_UTIL_CUH

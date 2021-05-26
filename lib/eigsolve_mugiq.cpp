@@ -2,6 +2,8 @@
 #include <util_quda.h>
 #include <eigensolve_quda.h>
 
+namespace mugiq {
+
 Eigsolve_Mugiq::Eigsolve_Mugiq(MugiqEigParam *eigParams_,
 			       MG_Mugiq *mg_env_,
 			       TimeProfile *eigProfile_,
@@ -418,3 +420,5 @@ void Eigsolve_Mugiq::getVector(unsigned int i, ColorSpinorField &out){
     blas::copy(out, *eVecs[i]);
   }
 }
+
+} // namespace mugiq

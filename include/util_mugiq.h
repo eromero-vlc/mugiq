@@ -36,6 +36,8 @@
 #define N_DISPLACE_SIGNS 2
 
 
+namespace mugiq {
+
 //- Memory info utiliry functions
 void printCPUMemInfo();
 void printGPUMemInfo();
@@ -55,5 +57,7 @@ extern "C" void printMemoryInfo();
     checkErrorCudaNoSync();    \
   } while (0)
 */
+
+} // namespace muqiq
 
 #endif // _MUGIQ_UTIL_H

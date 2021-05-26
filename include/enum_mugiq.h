@@ -5,6 +5,8 @@
 
 #define MUGIQ_INVALID_ENUM INT_MIN
 
+namespace mugiq {
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -95,5 +97,7 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+
+} // namespace muqiq
 
 #endif // _ENUM_MUGIQ_H  

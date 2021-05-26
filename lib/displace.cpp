@@ -1,5 +1,6 @@
 #include <displace.h>
 
+namespace mugiq {
 
 template <typename F, QudaFieldOrder order>
 Displace<F,order>::Displace(MugiqLoopParam *loopParams_, ColorSpinorField *csf_, QudaPrecision coarsePrec_) :
@@ -228,3 +229,5 @@ template class Displace<float, QUDA_FLOAT2_FIELD_ORDER>;
 template class Displace<float, QUDA_FLOAT4_FIELD_ORDER>;
 template class Displace<double, QUDA_FLOAT2_FIELD_ORDER>;
 template class Displace<double, QUDA_FLOAT4_FIELD_ORDER>;
+
+} // namespace mugiq
