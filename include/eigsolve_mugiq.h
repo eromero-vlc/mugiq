@@ -8,12 +8,12 @@
 #include <enum_mugiq.h>
 #include <complex>
 
+// Forward declaration of the QUDA-interface function that is needed here
+extern quda::cudaGaugeField *checkGauge(QudaInvertParam *param);
+
 namespace mugiq {
 
 using namespace quda;
-
-// Forward declaration of the QUDA-interface function that is needed here
-cudaGaugeField *checkGauge(QudaInvertParam *param);
 
 // Complex number
 using Complex = std::complex<double>;
